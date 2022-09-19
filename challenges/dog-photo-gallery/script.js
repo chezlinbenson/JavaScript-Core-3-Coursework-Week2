@@ -1,33 +1,41 @@
-let button1 = document.createElement("button");
-let button2 = document.createElement("button");
-button1.innerText = "Random Dog";
-button2.innerText = "Error";
+let displayEl = document.getElementById("displayDogs");
 
-let body = document.querySelector("body").appendChild(button1);
-body = document.querySelector("body").appendChild(button2);
+let button1 = document.getElementById("button_next");
+let button2 = document.getElementById("button_clear");
 
-button1.addEventListener("click", function () {
-  
-
-  //Retrieve the JSON
+function getRandom() {
   fetch("https://dog.ceo/api/breeds/image/random")
-    // Get the response and extract the JSON
-    .then(function (response) {
-      return response.json();
+    .then((response) => {
+      if (response.status >= 200 && response.status <= 299) {
+        return response.json();
+      } else {
+        throw new Error(
+          `Encountered something unexpected: ${response.status} ${response.statusText}`
+        );
+      }
     })
-    // Do something with the JSON
     .then((images) => {
-      //   console.log(images);
-      let imageUl = document.createElement("ul");
       let imageList = document.createElement("li");
-      let imageUrl = document.createElement("url");
-      imageUl.appendChild(imageList);
-      body.appendChild(imageUl);
+      imageList.setAttribute("id", "imageList");
       let randomImage = document.createElement("img");
-      imageUrl.appendChild(randomImage);
       randomImage.src = images.message;
       imageList.appendChild(randomImage);
+      displayEl.insertBefore(imageList, displayEl.firstChild);
     })
-    // If something goes wrong
-    .catch((error) => console.log(error));
+    .catch((error) => {
+      // Handle the error
+      console.log(error);
+    });
+}
+
+getRandom();
+button1.addEventListener("click", function () {
+  getRandom();
+});
+
+button2.addEventListener("click", function () {
+  let displayEl = document.getElementById("displayDogs");
+  if (displayEl.hasChildNodes()) {
+    displayEl.removeChild(displayEl.firstChild);
+  }
 });

@@ -1,0 +1,33 @@
+body {
+  /* display: flex; */
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+#displayDogs {
+  align-items: center;
+  list-style: none;
+  display: flex;
+}
+
+#imageList {
+}
+
+img {
+  text-align: center;
+  padding: 5px auto 5px auto;
+  height: 20rem;
+  width: auto;
+}
+
+#button_next {
+  text-align: center;
+}
+
+#clear_button {
+  text-align: center;
+  margin: 20rem auto 20rem auto;
+}
