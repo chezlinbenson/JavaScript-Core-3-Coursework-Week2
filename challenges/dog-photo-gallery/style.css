@@ -1,5 +1,4 @@
 body {
-  /* display: flex; */
   text-align: center;
 }
 
@@ -13,9 +12,6 @@ h1 {
   display: flex;
 }
 
-#imageList {
-}
-
 img {
   text-align: center;
   padding: 5px auto 5px auto;
@@ -27,7 +23,6 @@ img {
   text-align: center;
 }
 
-#clear_button {
+#button_clear {
   text-align: center;
-  margin: 20rem auto 20rem auto;
 }
