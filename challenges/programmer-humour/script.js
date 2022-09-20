@@ -24,8 +24,3 @@ function getFunnyImage() {
 }
 
 getFunnyImage();
-
-let buttonNext = document.getElementById("next");
-buttonNext.addEventListener("click", function () {
-  getFunnyImage();
-});
